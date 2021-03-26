@@ -22,7 +22,7 @@ function setup() {
   video.hide();
   classifyVideo();
   centerCanvas();
-  background(255, 0, 200);
+  background(255,255,51);
 }
 
 function windowResized() {
