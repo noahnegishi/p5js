@@ -3,15 +3,30 @@ let classifier;
 let label = "Staying safe...?";
 let modelURL = 'https://teachablemachine.withgoogle.com/models/aweGfWmUc/';
 
+var cnv;
+
 function preload() {
  classifier = ml5.imageClassifier (modelURL + 'model.json');
 }
 
+
+function centerCanvas() {
+  var x = (windowWidth - width) / 2;
+  var y = (windowHeight - height) / 2;
+  cnv.position(x, y);
+}
+
 function setup() {
-  createCanvas(640, 520);
+  cnv = createCanvas(640, 520);
   video = createCapture(VIDEO);
   video.hide();
   classifyVideo();
+  centerCanvas();
+  background(255, 0, 200);
+}
+
+function windowResized() {
+  centerCanvas();
 }
 
 function classifyVideo() {
